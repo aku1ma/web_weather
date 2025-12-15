@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><title>Погода</title></head>
+<body>
+  <h1>Погода</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <input name="city" placeholder="Город">
+    <button type="submit">Показать</button>
+  </form>
+
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+
+  {% if weather %}
+    <h2>{{ weather.city }}</h2>
+    <p>{{ weather.temp }} °C</p>
+    <p>{{ weather.desc }}</p>
+  {% endif %}
+</body>
+</html>
